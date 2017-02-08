@@ -141,6 +141,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\winvfs.h" />
+    <ClInclude Include="..\include\winvfs\winvfs_file_operations.h" />
+    <ClInclude Include="..\include\winvfs\winvfs_volume_operations.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

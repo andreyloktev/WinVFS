@@ -20,6 +20,9 @@
     <Filter Include="Source Files\h">
       <UniqueIdentifier>{6c91c3a6-1913-4212-b2f2-f802b49def7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\winvfs">
+      <UniqueIdentifier>{5c44b9c0-f4b6-41ad-9322-329625a71346}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Inf Include="WinVFS.inf">
@@ -29,6 +32,12 @@
   <ItemGroup>
     <ClInclude Include="..\include\winvfs.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\winvfs\winvfs_file_operations.h">
+      <Filter>Header Files\winvfs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\winvfs\winvfs_volume_operations.h">
+      <Filter>Header Files\winvfs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
