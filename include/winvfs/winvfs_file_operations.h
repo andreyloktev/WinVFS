@@ -1,12 +1,40 @@
 #pragma once
 
 #include <ntifs.h>
+#include "winvfs_file_control_block.h"
 
-/***/
-typedef NTSTATUS (*WinVfsLookupCallback)();
 
-/***/
-typedef NTSTATUS (*WinVfsCreateFileCallback)();
+/**Find a file or directory by its name
+* @param pParentDir a parent directory object
+* @param pFileName a file name to locate
+* @param pDesiredAccess a desired access to an existing file
+* @param fileAttr a desired file attributes
+* @param pFile return a new FCB if file exists. Otherwise nullptr is returned 
+* @return STATUS_SUCCESS if file exists. Otherwise a return code.
+*/
+typedef NTSTATUS (*WinVfsLookupCallback)( 
+                                            _In_ PWinvfsFCB pParentDir
+                                           ,_In_ PUNICODE_STRING pFileName
+                                           ,_In_ PACCESS_MASK pDesiredAccess
+                                           ,_In_ ULONG fileAttr
+                                           ,_Out_ PWinvfsFCB *pFile
+                                        );
+
+/**Create a new file or directory
+* @param pParentDir a parent directory object where a new file must be located
+* @param pNewFileName a file name for a new file
+* @param fileType what to create
+* @param fileAttr file attributes for a new file
+* @param pNewFile if file is created then a new FCB is returned. Otherwise nullptr is returned.
+* @return STATUS_SUCCESS if a file is created. Otherwise a return code.
+*/
+typedef NTSTATUS (*WinVfsCreateFileCallback)(
+                                                _In_ PWinvfsFCB pParentDir
+                                               ,_In_ PUNICODE_STRING pNewFileName
+                                               ,_In_ WinVfsFileType fileType
+                                               ,_In_ ULONG fileAttr
+                                               ,_Out_ PWinvfsFCB *pNewFile
+                                            );
 
 /***/
 typedef NTSTATUS (*WinVfsCleanupCallback)();
