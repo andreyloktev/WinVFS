@@ -42,5 +42,11 @@
     <ClInclude Include="..\include\winvfs\winvfs_file_control_block.h">
       <Filter>Header Files\winvfs</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\winvfs\winvfs_block_device.h">
+      <Filter>Header Files\winvfs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\winvfs\winvfs_volume_control_block.h">
+      <Filter>Header Files\winvfs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

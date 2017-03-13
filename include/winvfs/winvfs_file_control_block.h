@@ -10,4 +10,6 @@ typedef enum _WinVfsFileType
 
 typedef struct WinVfsFileControlBlock
 {
-} WinVfsFCB, *PWinvfsFCB;
+    WinVfsFileType nodeType;
+    PVOID pFsContext;
+} WinVfsFCB, *PWinVfsFCB;
