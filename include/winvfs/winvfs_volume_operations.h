@@ -8,7 +8,7 @@
 * @param pVCB volume to flush
 * @return STATUS_SUCCESS if operation completes success
 */
-typedef NTSTATUS (*WinVfsFlushVolume)( _In_ PWinVfsVCB pVCB );
+typedef NTSTATUS (*WinVfsFlushVolume)( _In_ PWinVfsVcb pVCB );
 
 /** Query volume information
 * @param pVCB volume to query information about
@@ -17,7 +17,7 @@ typedef NTSTATUS (*WinVfsFlushVolume)( _In_ PWinVfsVCB pVCB );
 * @return STATUS_SUCCESS if operation comletes successfully 
 */
 typedef NTSTATUS (*WinVfsQueryVolumeInformation)(
-                                                    _In_ PWinVfsVCB             pVCB
+                                                    _In_ PWinVfsVcb             pVCB
                                                    ,_In_ FS_INFORMATION_CLASS   viClass
                                                    ,_Out_ PWinVfsBuffer pBuffer
                                                 );
@@ -29,7 +29,7 @@ typedef NTSTATUS (*WinVfsQueryVolumeInformation)(
 * @return STATUS_SUCCESS if operation comletes successfully 
 */
 typedef NTSTATUS (*WinVfsSetVolumeINformation)(
-                                                _In_ PWinVfsVCB             pVCB
+                                                _In_ PWinVfsVcb             pVCB
                                                ,_In_ FS_INFORMATION_CLASS   viClass
                                                ,_In_ PWinVfsBuffer pBuffer
                                             );
@@ -41,7 +41,7 @@ typedef NTSTATUS (*WinVfsSetVolumeINformation)(
 * @return STATUS_SUCCESS if operation comletes successfully 
 */
 typedef NTSTATUS (*WinVfsFSCTL)(
-                                    _In_    PWinVfsVCB     pVCB
+                                    _In_    PWinVfsVcb     pVCB
                                    ,_In_    ULONG          controlCode
                                    ,_Inout_ PWinVfsBuffer  pBuffer
                             );
@@ -57,7 +57,7 @@ typedef NTSTATUS (*WinVfsMount)(
                                     _In_    PDEVICE_OBJECT  pPhysicalVolume
                                    ,_In_    PVPB            pVPB
                                    ,_In_    ULONG           flags
-                                   ,_Inout_ PWinVfsVCB      *ppVCB
+                                   ,_Inout_ PWinVfsVcb      *ppVCB
                             );
 
 typedef struct _WIN_VFS_VOLUME_OPERATION

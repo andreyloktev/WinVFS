@@ -48,5 +48,8 @@
     <ClInclude Include="..\include\winvfs\winvfs_volume_control_block.h">
       <Filter>Header Files\winvfs</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\winvfs\winvfs_common.h">
+      <Filter>Header Files\winvfs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

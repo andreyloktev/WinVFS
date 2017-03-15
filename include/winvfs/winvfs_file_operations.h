@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ntifs.h>
+#include "winvfs_common.h"
 #include "winvfs_file_control_block.h"
 #include "winvfs_block_device.h"
 
@@ -15,12 +15,12 @@
 * @return STATUS_SUCCESS if file exists. Otherwise a return code.
 */
 typedef NTSTATUS (*WinVfsLookupCallback)( 
-                                            _In_ PWinVfsFCB             pParentDir
+                                            _In_ PWinVfsFcb             pParentDir
                                            ,_In_ PUNICODE_STRING        pFileName
                                            ,_In_ PACCESS_MASK           pDesiredAccess
                                            ,_In_ ULONG                  fileAttr
                                            ,_In_ PIO_SECURITY_CONTEXT   pSecurityCtxt
-                                           ,_Out_ PWinVfsFCB*           ppFile
+                                           ,_Out_ PWinVfsFcb*           ppFile
                                         );
 
 /**Create a new file or directory
@@ -33,18 +33,18 @@ typedef NTSTATUS (*WinVfsLookupCallback)(
 * @return STATUS_SUCCESS if a file is created. Otherwise a return code.
 */
 typedef NTSTATUS (*WinVfsCreateFileCallback)(
-                                                _In_ PWinVfsFCB             pParentDir
+                                                _In_ PWinVfsFcb             pParentDir
                                                ,_In_ PUNICODE_STRING        pNewFileName
-                                               ,_In_ WinVfsFileType         fileType
+                                               ,_In_ WinVfsNodeType         fileType
                                                ,_In_ ULONG                  fileAttr
                                                ,_In_ PIO_SECURITY_CONTEXT   pSecurityCtxt
-                                               ,_Out_ PWinVfsFCB*           ppNewFile
+                                               ,_Out_ PWinVfsFcb*           ppNewFile
                                             );
 
 /**Close a file object. It's called before deallocate WinvfsFCB object
 * @param pFile file object to close
 */
-typedef NTSTATUS (*WinVfsCloseFileCallback)( _In_ PWinVfsFCB pFile );
+typedef NTSTATUS (*WinVfsCloseFileCallback)( _In_ PWinVfsFcb pFile );
 
 /** Read a file
 * @param pFile          a file object to read from
@@ -53,7 +53,7 @@ typedef NTSTATUS (*WinVfsCloseFileCallback)( _In_ PWinVfsFCB pFile );
 * @param pBuffer        pointer to buffer structure
 */
 typedef NTSTATUS (*WinVfsReadFileCallback)(
-                                            _In_ PWinVfsFCB pFile
+                                            _In_ PWinVfsFcb pFile
                                            ,_In_ LARGE_INTEGER offset
                                            ,_In_ DWORD32 bytesToRaad
                                            ,_In_ PWinVfsBuffer pBuffer
@@ -66,7 +66,7 @@ typedef NTSTATUS (*WinVfsReadFileCallback)(
 * @param pBuffer        pointer to buffer structure
 */
 typedef NTSTATUS (*WinVfsWriteFileCallback)(
-                                            _In_ PWinVfsFCB pFile
+                                            _In_ PWinVfsFcb pFile
                                            ,_In_ LARGE_INTEGER offset
                                            ,_In_ DWORD32 bytesToWrite
                                            ,_In_ PWinVfsBuffer pBuffer
@@ -75,7 +75,7 @@ typedef NTSTATUS (*WinVfsWriteFileCallback)(
 /**Flush file buffers
 * @param pFileObj file object to flush
 */
-typedef NTSTATUS (*WinVfsFlushFileBuffers)( _In_ PWinVfsFCB pFileObj );
+typedef NTSTATUS (*WinVfsFlushFileBuffers)( _In_ PWinVfsFcb pFileObj );
 
 /**Gey information about a file
 * @param pFileObj a file to get information about
@@ -85,7 +85,7 @@ typedef NTSTATUS (*WinVfsFlushFileBuffers)( _In_ PWinVfsFCB pFileObj );
 * @return STATUS_SUCCESS if information can be retrieved.
 */
 typedef NTSTATUS (*WinVfsGetFileInformationCallback)(
-                                                        _In_    PWinVfsFCB pFileObj
+                                                        _In_    PWinVfsFcb pFileObj
                                                        ,_In_    FILE_INFORMATION_CLASS fiClass
                                                        ,_Inout_ PWinVfsBuffer pBuffer
                                                        ,_Out_   PULONG pBytes
@@ -99,7 +99,7 @@ typedef NTSTATUS (*WinVfsGetFileInformationCallback)(
 * @return STATUS_SUCCESS if information can be retrieved.
 */
 typedef NTSTATUS (*WinVfsSetFileInformationCallback)(
-                                                        _In_    PWinVfsFCB pFileObj
+                                                        _In_    PWinVfsFcb pFileObj
                                                        ,_In_    FILE_INFORMATION_CLASS fiClass
                                                        ,_Inout_ PWinVfsBuffer pBuffer
                                                        ,_Out_   PULONG pBytes
@@ -116,7 +116,7 @@ typedef NTSTATUS (*WinVfsSetFileInformationCallback)(
           STATUS_NO_SUCH_FILE if there is not a file satisfying to search patter
 */
 typedef NTSTATUS (*WinVfsReadDirectoryCallback)(
-                                                    _In_    PWinVfsFCB              pFileObj
+                                                    _In_    PWinVfsFcb              pFileObj
                                                    ,_In_    UNICODE_STRING          searchPattern
                                                    ,_In_    FILE_INFORMATION_CLASS  fiClass
                                                    ,_Inout_ ULONG                   fileOffset
@@ -128,7 +128,7 @@ typedef NTSTATUS (*WinVfsReadDirectoryCallback)(
 * @param pFileObj file to delete
 * @return if success return STATUS_SUCCESS
 */
-typedef NTSTATUS (*WinVfsDeleteFileCallback)( _In_  PWinVfsFCB pFileObj );
+typedef NTSTATUS (*WinVfsDeleteFileCallback)( _In_  PWinVfsFcb pFileObj );
 
 
 typedef struct _WIN_VFS_FILE_OPERATIONS

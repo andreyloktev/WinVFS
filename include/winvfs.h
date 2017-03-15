@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ntifs.h>
+#include "winvfs/winvfs_common.h"
 #include "winvfs/winvfs_file_operations.h"
 #include "winvfs/winvfs_volume_operations.h"
 
