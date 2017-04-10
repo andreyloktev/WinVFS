@@ -63,6 +63,9 @@ typedef struct WinVfsVolumeControlBlock
     //So all CCB structure for the volume open opearation are linked directly to the WinVfsVCB
     LIST_ENTRY pWinVfsCCBListHead;
 
+    //All openned files are binded together for VCB
+    LIST_ENTRY NextFCB;
+
     //Pointer to a stream file object created for the volume information
     //to be more easily read form secondary storage
     PFILE_OBJECT pStreamFileObject;

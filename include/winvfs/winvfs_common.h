@@ -4,9 +4,10 @@
 
 typedef enum _WinVfsNodeType
 {
-    WinVfsFile
-    ,WinVfsDirectory
-    ,WinVfsVolume
+    WinVfsFile = 'VFSF'
+    ,WinVfsDirectory = 'VFCD'
+    ,WinVfsContext = 'VFSC'
+    ,WinVfsVolume = 'VFSV'
 } WinVfsNodeType;
 
 
