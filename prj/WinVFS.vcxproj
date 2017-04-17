@@ -147,6 +147,7 @@
     <ClInclude Include="..\include\winvfs\winvfs_file_operations.h" />
     <ClInclude Include="..\include\winvfs\winvfs_volume_control_block.h" />
     <ClInclude Include="..\include\winvfs\winvfs_volume_operations.h" />
+    <ClInclude Include="..\src\h\buffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

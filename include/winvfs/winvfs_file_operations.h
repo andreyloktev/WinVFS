@@ -49,59 +49,70 @@ typedef NTSTATUS (*WinVfsCloseFileCallback)( _In_ PWinVfsFcb pFile );
 /** Read a file
 * @param pFile          a file object to read from
 * @param offset         file offset to begin reading from
-* @param bytesToRead    bytes to read
 * @param pBuffer        pointer to buffer structure
+* @param bytesToRead    bytes to read
+* @param pBytes         amount read bytes
+* @return STATUS_SUCCESS if information is read successfully.
 */
 typedef NTSTATUS (*WinVfsReadFileCallback)(
-                                            _In_ PWinVfsFcb pFile
-                                           ,_In_ LARGE_INTEGER offset
-                                           ,_In_ DWORD32 bytesToRaad
-                                           ,_In_ PWinVfsBuffer pBuffer
+                                            _In_    PWinVfsFcb pFile
+                                           ,_In_    LARGE_INTEGER offset
+                                           ,_Out_   PVOID pBuffer
+                                           ,_In_    UINT32 bytesToRead
+                                           ,_Out_   PUINT32 pBytes
                                         );
 
 /**Write a file
 * @param pFile          a file object to write to
 * @param offset         file offset to begin writting to
-* @param bytesToRead    bytes to write
 * @param pBuffer        pointer to buffer structure
+* @param bytesToRead    bytes to write
+* @param pBytes         amount written bytes 
+* @return STATUS_SUCCESS if information is written successfully
 */
 typedef NTSTATUS (*WinVfsWriteFileCallback)(
-                                            _In_ PWinVfsFcb pFile
-                                           ,_In_ LARGE_INTEGER offset
-                                           ,_In_ DWORD32 bytesToWrite
-                                           ,_In_ PWinVfsBuffer pBuffer
+                                            _In_    PWinVfsFcb pFile
+                                           ,_In_    LARGE_INTEGER offset
+                                           ,_In_    PVOID pBuffer
+                                           ,_In_    UINT32 bytesToWrite
+                                           ,_Out_   PUINT32 pBytes
                                         );
 
 /**Flush file buffers
 * @param pFileObj file object to flush
+* @return STATUS_SUCCESS if file is flushhed successfully
 */
 typedef NTSTATUS (*WinVfsFlushFileBuffers)( _In_ PWinVfsFcb pFileObj );
 
 /**Gey information about a file
 * @param pFileObj a file to get information about
 * @param fiClass a value that specifies which structure to use to query or set information for a file object.
-* @param pBuffer buffer
+* @param pBuffer buffer. Buffer type depends on FILE_INFORMATION_CLASS.
+* @param szBuffer buffer size
 * @param pBytes bytes retrieved
 * @return STATUS_SUCCESS if information can be retrieved.
 */
 typedef NTSTATUS (*WinVfsGetFileInformationCallback)(
                                                         _In_    PWinVfsFcb pFileObj
                                                        ,_In_    FILE_INFORMATION_CLASS fiClass
-                                                       ,_Inout_ PWinVfsBuffer pBuffer
+                                                       ,_Out_   PVOID pBuffer
+                                                       ,_In_    UINT32 szBuffer
                                                        ,_Out_   PULONG pBytes
                                                     );
 
 /**Gey information about a file
 * @param pFileObj a file to set information to
 * @param fiClass a value that specifies which structure to use to query or set information for a file object.
-* @param pBuffer buffer
-* @param pBytes bytes retrieved
+* @param pBuffer buffer with file information. Buffer type depends on FILE_INFORMATION_CLASS.
+* @param szBuffer buffer size
+* @param pBytes bytes set
 * @return STATUS_SUCCESS if information can be retrieved.
 */
 typedef NTSTATUS (*WinVfsSetFileInformationCallback)(
                                                         _In_    PWinVfsFcb pFileObj
                                                        ,_In_    FILE_INFORMATION_CLASS fiClass
-                                                       ,_Inout_ PWinVfsBuffer pBuffer
+                                                       ,_In_    PVOID pBuffer
+                                                       ,_In_    UINT32 szBuffer
                                                        ,_Out_   PULONG pBytes
                                                     );
 
@@ -109,8 +120,9 @@ typedef NTSTATUS (*WinVfsSetFileInformationCallback)(
 * @param pFileObj a directory to enumerate
 * @param searchPattern a search pattern
 * @param fiClass what does information need?
-* @param fileOffset file entry offset(index) in a directory
+* @param fileOffset file entry offset(index) in a directory. If there are files when buffer is filled then cuurent directory position is saved via pFileOffset
 * @param pBuffer buffer. It's cast to a structure depending on the fiClass parameter
+* @param szBuffer buffer size.
 * @return STATUS_SUCCESS if there is no more space in the buffer but file entries exist yet
           STATUS_NO_MORE_FILES if there are not more files in a directory
           STATUS_NO_SUCH_FILE if there is not a file satisfying to search patter
@@ -119,8 +131,9 @@ typedef NTSTATUS (*WinVfsReadDirectoryCallback)(
                                                     _In_    PWinVfsFcb              pFileObj
                                                    ,_In_    UNICODE_STRING          searchPattern
                                                    ,_In_    FILE_INFORMATION_CLASS  fiClass
-                                                   ,_Inout_ ULONG                   fileOffset
-                                                   ,_Out_   PWinVfsBuffer           pBuffer
+                                                   ,_Inout_ PULONG                  pFileOffset
+                                                   ,_Out_   PVOID                   pBuffer
+                                                   ,_In_    UINT32                  szBuffer
                                             );
 
 

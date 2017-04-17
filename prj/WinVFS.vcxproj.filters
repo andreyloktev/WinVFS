@@ -51,5 +51,8 @@
     <ClInclude Include="..\include\winvfs\winvfs_common.h">
       <Filter>Header Files\winvfs</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\h\buffer.h">
+      <Filter>Source Files\h</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

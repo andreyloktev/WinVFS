@@ -9,8 +9,3 @@ typedef enum _WinVfsNodeType
     ,WinVfsContext = 'VFSC'
     ,WinVfsVolume = 'VFSV'
 } WinVfsNodeType;
-
-
-typedef struct _WinVfsBufer
-{
-} WinVfsBuffer, *PWinVfsBuffer;
