@@ -23,6 +23,12 @@
     <Filter Include="Header Files\winvfs">
       <UniqueIdentifier>{5c44b9c0-f4b6-41ad-9322-329625a71346}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\h\logger">
+      <UniqueIdentifier>{2c12ca02-7548-4fe7-bf44-1c586a3d0a55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\h\cache">
+      <UniqueIdentifier>{1104b240-1f64-40cf-913f-6b4465ebe495}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Inf Include="WinVFS.inf">
@@ -53,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="..\src\h\buffer.h">
       <Filter>Source Files\h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\h\winvfs_cache.h">
+      <Filter>Source Files\h\cache</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
