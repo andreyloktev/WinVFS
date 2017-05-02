@@ -61,7 +61,7 @@
       <Filter>Source Files\h</Filter>
     </ClInclude>
     <ClInclude Include="..\src\h\winvfs_cache.h">
-      <Filter>Source Files\h\cache</Filter>
+      <Filter>Header Files\winvfs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
