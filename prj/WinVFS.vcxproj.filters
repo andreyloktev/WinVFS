@@ -60,12 +60,15 @@
     <ClInclude Include="..\src\h\buffer.h">
       <Filter>Source Files\h</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\h\winvfs_cache.h">
+    <ClInclude Include="..\include\winvfs\winvfs_cache.h">
       <Filter>Header Files\winvfs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\winvfs_block_device.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\winvfs_cache.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
