@@ -34,7 +34,7 @@ typedef NTSTATUS (*WinVfsQueryVolumeInformation)(
 * @param pBytes bytes set.
 * @return STATUS_SUCCESS if operation comletes successfully 
 */
-typedef NTSTATUS (*WinVfsSetVolumeINformation)(
+typedef NTSTATUS (*WinVfsSetVolumeInformation)(
                                                 _In_    PWinVfsVcb              pVCB
                                                ,_In_    FS_INFORMATION_CLASS    viClass
                                                ,_In_    PVOID                   pBuffer
@@ -76,11 +76,11 @@ typedef NTSTATUS (*WinVfsMount)(
                                    ,_Inout_ PWinVfsVcb      *ppVCB
                             );
 
-typedef struct _WIN_VFS_VOLUME_OPERATION
+typedef struct _WIN_VFS_VOLUME_OPERATIONS
 {
     WinVfsFlushVolume               WinVfsFlushVolumeDispatch;
     WinVfsQueryVolumeInformation    WinVfsQueryVolumeInformationDispatch;
-    WinVfsSetVolumeINformation      WinVfsSetVolumeInformationDispatch;
+    WinVfsSetVolumeInformation      WinVfsSetVolumeInformationDispatch;
     WinVfsFSCTL                     WinVfsFSCTLDispatch;
     WinVfsMount                     WinVfsMountDispatch;
-}WIN_VFS_VOLUME_OPERATION,*PWIN_VFS_VOLUME_OPERATION;
+}WinVfsVoluneOperations,*PWinVfsVoluneOperations;

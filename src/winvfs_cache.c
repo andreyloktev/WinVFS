@@ -5,19 +5,19 @@
 #ifdef ALLOC_PRAGMA
 #pragma alloc_text(PAGE, winvfs_cache_insert_entry)
 #pragma alloc_text(PAGE, winvfs_cache_remove_entry)
-#pragma alloc_text(PAGE, winvfs_cache_find_entry
+#pragma alloc_text(PAGE, winvfs_cache_find_entry)
 #endif
 
+//FIXME: possible need to splay tree after insering a new element
 void winvfs_cache_insert_entry( _Inout_ PRTL_SPLAY_LINKS *ppRoot, _In_ PWinVfsCacheEntry pNewEntry, _In_ WinVfsCahceCompare compare )
 {
     WinVfsComparisonResult result = IsEqual;
-    WinVfsCahceCompare compare = NULL;
     PWinVfsCacheEntry pCahceEntry = NULL;
     PRTL_SPLAY_LINKS node = NULL;
 
     PAGED_CODE();
 
-    if( NULL == pNewEntry || NULL == ppRoot )
+    if( NULL == pNewEntry || NULL == ppRoot || NULL == compare )
     {
         //Error
         return;
@@ -58,7 +58,6 @@ void winvfs_cache_insert_entry( _Inout_ PRTL_SPLAY_LINKS *ppRoot, _In_ PWinVfsCa
             else
             {
                 node = RtlLeftChild( &pCahceEntry->links );
-                continue;
             }
         }
         else
@@ -72,7 +71,6 @@ void winvfs_cache_insert_entry( _Inout_ PRTL_SPLAY_LINKS *ppRoot, _In_ PWinVfsCa
             else
             {
                 node = RtlRightChild( &pCahceEntry->links );
-                continue;
             }
         }
     }
@@ -94,9 +92,45 @@ void winvfs_cache_remove_entry( _Inout_ PRTL_SPLAY_LINKS *ppRoot, _In_ PWinVfsCa
     }
 }
 
-PWinVfsCacheEntry winvfs_cache_find_entry( _In_ PRTL_SPLAY_LINKS pRoot, _In_ PWinVfsCacheEntry pEntryToFind, _In_ WinVfsCahceCompare compare )
+PWinVfsCacheEntry winvfs_cache_find_entry( _In_ PRTL_SPLAY_LINKS *ppRoot, _In_ PWinVfsCacheEntry pEntryToFind, _In_ WinVfsCahceCompare compare )
 {
+    WinVfsComparisonResult result = IsEqual;
+    PWinVfsCacheEntry pCahceEntry = NULL;
+    PRTL_SPLAY_LINKS node = NULL;
+
     PAGED_CODE();
+
+    if( NULL == pEntryToFind || NULL == ppRoot || NULL == compare )
+    {
+        //Error
+        return NULL;
+    }
+
+    node = *ppRoot;
+
+    while( NULL != node )
+    {
+        pCahceEntry = CONTAINING_RECORD( node, WinVfsCacheEntry, links );
+
+        result = compare( pCahceEntry, pEntryToFind );
+
+        if( IsEqual == result )
+        {
+            //Move found node to the top of the tree
+            *ppRoot = RtlSplay( node );
+
+            //Entry is found in cache
+            return CONTAINING_RECORD( node, WinVfsCacheEntry, links );
+        }
+        else if( IsGreaterThan == result )
+        {
+            node = RtlLeftChild( node );
+        }
+        else
+        {
+            node = RtlRightChild( node );
+        }
+    }
 
     return NULL;
 }

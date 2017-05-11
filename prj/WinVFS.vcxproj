@@ -56,21 +56,21 @@
     <TargetVersion>Windows10</TargetVersion>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
-    <ConfigurationType>Driver</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <DriverType>WDM</DriverType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <TargetVersion>Windows10</TargetVersion>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
-    <ConfigurationType>Driver</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <DriverType>WDM</DriverType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <TargetVersion>Windows10</TargetVersion>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
-    <ConfigurationType>Driver</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <DriverType>WDM</DriverType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
@@ -142,9 +142,6 @@
     <IncludePath>$(IncludePath);$(ProjectDir);../include</IncludePath>
   </PropertyGroup>
   <ItemGroup>
-    <Inf Include="WinVFS.inf" />
-  </ItemGroup>
-  <ItemGroup>
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
@@ -156,10 +153,13 @@
     <ClInclude Include="..\include\winvfs\winvfs_file_operations.h" />
     <ClInclude Include="..\include\winvfs\winvfs_volume_control_block.h" />
     <ClInclude Include="..\include\winvfs\winvfs_volume_operations.h" />
-    <ClInclude Include="..\src\h\buffer.h" />
+    <ClInclude Include="..\src\h\winvfs_buffer.h" />
+    <ClInclude Include="..\src\h\winvfs_internal.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\winvfs.c" />
     <ClCompile Include="..\src\winvfs_block_device.c" />
+    <ClCompile Include="..\src\winvfs_buffer.c" />
     <ClCompile Include="..\src\winvfs_cache.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

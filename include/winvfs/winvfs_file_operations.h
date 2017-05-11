@@ -82,7 +82,7 @@ typedef NTSTATUS (*WinVfsWriteFileCallback)(
 * @param pFileObj file object to flush
 * @return STATUS_SUCCESS if file is flushhed successfully
 */
-typedef NTSTATUS (*WinVfsFlushFileBuffers)( _In_ PWinVfsFcb pFileObj );
+typedef NTSTATUS (*WinVfsFlushFileBuffersCallback)( _In_ PWinVfsFcb pFileObj );
 
 /**Gey information about a file
 * @param pFileObj a file to get information about
@@ -146,14 +146,14 @@ typedef NTSTATUS (*WinVfsDeleteFileCallback)( _In_  PWinVfsFcb pFileObj );
 
 typedef struct _WIN_VFS_FILE_OPERATIONS
 {
-    WinVfsLookupCallback                WinVfsFileDispatchLookup;
-    WinVfsCreateFileCallback            WinVfsFileDispatchCreate;
-    WinVfsCloseFileCallback             WinVfsFileDispatchClose;
-    WinVfsReadFileCallback              WinVfsFileDispatchRead;
-    WinVfsWriteFileCallback             WinVfsFileDispatchWrite;
-    WinVfsFlushFileBuffers              WinVfsFileDispatchFlush;
-    WinVfsGetFileInformationCallback    WinVfsFileDispatchGetInformation;
-    WinVfsReadDirectoryCallback         WinVfsFileDispatchReadDirectory;
-    WinVfsDeleteFileCallback            WinVfsFileDispatchDelete; 
-} WIN_VFS_FILE_OPERATIONS, *PWIN_VFS_FILE_OPERATIONS;
+    WinVfsLookupCallback                WinVfsFileLookup;
+    WinVfsCreateFileCallback            WinVfsFileCreate;
+    WinVfsCloseFileCallback             WinVfsFileClose;
+    WinVfsReadFileCallback              WinVfsFileRead;
+    WinVfsWriteFileCallback             WinVfsFileWrite;
+    WinVfsFlushFileBuffersCallback      WinVfsFileFlush;
+    WinVfsGetFileInformationCallback    WinVfsFileGetInformation;
+    WinVfsReadDirectoryCallback         WinVfsFileReadDirectory;
+    WinVfsDeleteFileCallback            WinVfsFileDelete; 
+} WinVfsFileOperations, *PWinVfsFileOperations;
 

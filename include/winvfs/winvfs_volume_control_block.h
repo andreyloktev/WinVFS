@@ -48,10 +48,10 @@ typedef struct WinVfsVolumeControlBlock
     PDEVICE_OBJECT pTargetDEviceObject;
 
     //  The volume GUID of the target device object.
-    GUID VolumeGuid;
+    GUID volumeGuid;
 
     //  The volume GUID path of the target device object.
-    UNICODE_STRING VolumeGuidPath;
+    UNICODE_STRING volumeGuidPath;
 
     //Root directory
     PWinVfsFcb pRootDir;
@@ -64,7 +64,7 @@ typedef struct WinVfsVolumeControlBlock
     LIST_ENTRY pWinVfsCCBListHead;
 
     //All openned files are binded together for VCB
-    LIST_ENTRY NextFCB;
+    LIST_ENTRY nextFCB;
 
     //Pointer to a stream file object created for the volume information
     //to be more easily read form secondary storage
@@ -105,31 +105,31 @@ inline PVOID WinVfsExtension( PWinVfsVcb pVcb )
 //  work requests to the volume.
 typedef struct _WIN_VFS_VOLUME_DEVICE_OBJECT 
 {
-    DEVICE_OBJECT DeviceObject;
+    DEVICE_OBJECT deviceObject;
 
     //  The following field tells how many requests for this volume have
     //  either been enqueued to ExWorker threads or are currently being
     //  serviced by ExWorker threads.  If the number goes above
     //  a certain threshold, put the request on the overflow queue to be
     //  executed later.
-    ULONG PostedRequestCount;
+    ULONG postedRequestCount;
 
     //  The following field indicates the number of IRP's waiting
     //  to be serviced in the overflow queue.
-    ULONG OverflowQueueCount;
+    ULONG overflowQueueCount;
 
     //  The following field contains the queue header of the overflow queue.
     //  The Overflow queue is a list of IRP's linked via the IRP's ListEntry
     //  field.
-    LIST_ENTRY OverflowQueue;
+    LIST_ENTRY overflowQueue;
 
     //  The following spinlock protects access to all the above fields.
-    KSPIN_LOCK OverflowQueueSpinLock;
+    KSPIN_LOCK overflowQueueSpinLock;
 
     //  This is a common head for the FAT volume file
-    FSRTL_COMMON_FCB_HEADER VolumeFileHeader;
+    FSRTL_COMMON_FCB_HEADER volumeFileHeader;
 
     //  This is the file system specific volume control block.
-    PWinVfsVcb Vcb;
+    PWinVfsVcb pWinVfsVcb;
 
 } WinVfsDeviceObject, *PWinVfsDeviceObject;

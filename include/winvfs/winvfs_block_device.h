@@ -13,7 +13,7 @@
 * @rapam pReadBytes actual amount read bytes
 * @return error code
 */
-NTSTATUS blockdev_read( _In_ DEVICE_OBJECT blockDev, _In_ UINT32 flags, _In_ LONGLONG offset, _Out_ PVOID pBuffer, _In_ UINT32 szBuffer, _Out_ PUINT32 pReadBytes );
+NTSTATUS blockdev_read( _In_ PDEVICE_OBJECT pBlockDev, _In_ UINT32 flags, _In_ LONGLONG offset, _Out_ PVOID pBuffer, _In_ UINT32 szBuffer, _Out_ PUINT32 pReadBytes );
 
 /**
 * Write data to a block device.
@@ -25,13 +25,13 @@ NTSTATUS blockdev_read( _In_ DEVICE_OBJECT blockDev, _In_ UINT32 flags, _In_ LON
 * @rapam pWrittenBytes actual amount written bytes
 * @return error code
 */
-NTSTATUS blockdev_write( _In_ DEVICE_OBJECT blockDev, _In_ UINT32 flags, _In_ LONGLONG offset, _In_ PVOID pBuffer, _In_ UINT32 szBuffer, _Out_ PUINT32 pWrittenBytes );
+NTSTATUS blockdev_write( _In_ PDEVICE_OBJECT pBlockDev, _In_ UINT32 flags, _In_ LONGLONG offset, _In_ PVOID pBuffer, _In_ UINT32 szBuffer, _Out_ PUINT32 pWrittenBytes );
 
 /**
 * Flush all block device buffers
 * @param blockDev block device object
 */
-NTSTATUS blockdev_flush( _In_ DEVICE_OBJECT blockDev );
+NTSTATUS blockdev_flush( _In_ PDEVICE_OBJECT pBlockDev );
 
 /**
 * Ioctl
@@ -45,7 +45,7 @@ NTSTATUS blockdev_flush( _In_ DEVICE_OBJECT blockDev );
 * @return error code
 */
 NTSTATUS blockdev_ioctl( 
-                        _In_        DEVICE_OBJECT blockDev
+                        _In_        PDEVICE_OBJECT pBlockDev
                        ,_In_        UINT32 ioctl
                        ,_In_opt_    PVOID pInBuffer
                        ,_In_        UINT32 szInBuffer

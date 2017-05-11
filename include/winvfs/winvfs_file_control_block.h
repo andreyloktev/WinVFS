@@ -62,17 +62,17 @@ inline WinVfsNodeType WinVfsFCBType( PWinVfsFcb pFCB )
     return pFCB->nodeType;
 }
 
-inline bool IsWinVfsNodeFile( PWinVfsFcb pFCB )
+inline BOOLEAN IsWinVfsNodeFile( PWinVfsFcb pFCB )
 {
     return WinVfsFile == pFCB->nodeType;
 }
 
-inline bool IsWinVfsNodeContext( PWinVfsFcb pFCB )
+inline BOOLEAN IsWinVfsNodeContext( PWinVfsFcb pFCB )
 {
     return WinVfsContext == pFCB->nodeType;
 }
 
-inline bool IsWinVfsNodeVolume( PWinVfsFcb pFCB )
+inline BOOLEAN IsWinVfsNodeVolume( PWinVfsFcb pFCB )
 {
     return WinVfsVolume == pFCB->nodeType;
 }
