@@ -59,6 +59,9 @@ typedef struct WinVfsVolumeControlBlock
     //WinVfs extension special for data of 3d party drivers
     PVOID pVcbExtension;
 
+    //Is page file supported by fsd implementation
+    BOOLEAN isPageFileSupported;
+
     //For volume opeation, we don't create a WinVfsFCB( we use WinVfsVCB directly instead )
     //So all CCB structure for the volume open opearation are linked directly to the WinVfsVCB
     LIST_ENTRY pWinVfsCCBListHead;

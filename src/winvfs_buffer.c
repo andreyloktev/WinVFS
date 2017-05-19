@@ -23,3 +23,8 @@ void winvfs_free( PVOID p )
 {
     ExFreePoolWithTag( p, 'SFVW' );
 }
+
+void winvfs_zero_memory( PVOID p, SIZE_T bytes )
+{
+    RtlZeroMemory( p, bytes );
+}

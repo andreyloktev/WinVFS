@@ -10,8 +10,9 @@
 */
 NTSTATUS winvfs_init( 
                         _In_   PWinVfsFileOperations    pFileOperationss
-                        ,_In_   PWinVfsVoluneOperations  pVolumeOperations
-                        ,_Out_  PVOID*                   ppWinVFS
+                       ,_In_   PWinVfsVoluneOperations  pVolumeOperations
+                       ,_In_   BOOLEAN                  isPageFileSupported
+                       ,_Out_  PVOID*                   ppWinVFS
                     );
 
 /**

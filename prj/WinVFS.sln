@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinVFS", "WinVFS.vcxproj", "{CE9370A7-EAEC-45A3-88DC-FF28EF42744E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WInVfsFat", "..\samples\WInVfsFat\WInVfsFat.vcxproj", "{CA1C98FD-F634-4756-94C6-B295CACDCDBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,30 @@ Global
 		{CE9370A7-EAEC-45A3-88DC-FF28EF42744E}.Release|x86.ActiveCfg = Release|Win32
 		{CE9370A7-EAEC-45A3-88DC-FF28EF42744E}.Release|x86.Build.0 = Release|Win32
 		{CE9370A7-EAEC-45A3-88DC-FF28EF42744E}.Release|x86.Deploy.0 = Release|Win32
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|ARM.ActiveCfg = Debug|ARM
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|ARM.Build.0 = Debug|ARM
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|ARM.Deploy.0 = Debug|ARM
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|ARM64.Build.0 = Debug|ARM64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|x64.ActiveCfg = Debug|x64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|x64.Build.0 = Debug|x64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|x64.Deploy.0 = Debug|x64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|x86.ActiveCfg = Debug|Win32
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|x86.Build.0 = Debug|Win32
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Debug|x86.Deploy.0 = Debug|Win32
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|ARM.ActiveCfg = Release|ARM
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|ARM.Build.0 = Release|ARM
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|ARM.Deploy.0 = Release|ARM
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|ARM64.ActiveCfg = Release|ARM64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|ARM64.Build.0 = Release|ARM64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|ARM64.Deploy.0 = Release|ARM64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|x64.ActiveCfg = Release|x64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|x64.Build.0 = Release|x64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|x64.Deploy.0 = Release|x64
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|x86.ActiveCfg = Release|Win32
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|x86.Build.0 = Release|Win32
+		{CA1C98FD-F634-4756-94C6-B295CACDCDBA}.Release|x86.Deploy.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -55,6 +55,18 @@
     <ClInclude Include="..\src\h\winvfs_buffer.h">
       <Filter>Source Files\h</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\h\winvfs_dispatch.h">
+      <Filter>Source Files\h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\h\winvfs_fastio_dispatch.h">
+      <Filter>Source Files\h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\h\winvfs_cm_callbacks.h">
+      <Filter>Source Files\h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\h\winvfs_filter_callbacks.h">
+      <Filter>Source Files\h</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\winvfs_block_device.c">
