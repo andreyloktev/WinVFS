@@ -27,5 +27,5 @@ BOOLEAN winvfs_cm_acquire_fcb_for_lazywrite( _In_ PVOID pFcb, _In_ BOOLEAN wait 
 
 //=================================================================================/
 
-//==================== Cache Manager callbacks for files ==========================/
+//================= Volume operations Cache Manager callbacks =====================/
 //=================================================================================/
